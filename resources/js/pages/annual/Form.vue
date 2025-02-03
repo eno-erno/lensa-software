@@ -357,6 +357,7 @@ export default {
     const getDataEmployee = async (id) => {
       await axios.get(`/api/employees/${id}`)
           .then(response => {
+            response.data.data.id = null
             form.value = {
               ...form.value,
               ...response.data.data,
