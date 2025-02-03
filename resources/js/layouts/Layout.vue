@@ -18,17 +18,20 @@
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Lensa Software</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto d-sm-none">
-              <!-- Menu mobile -->
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item">
+                <a class="border border-circle nav-link me-sm-4" href="#" style="width: 3rem; height: 3rem; border-radius: 50%;">
+                  <img src="/public/images/default-user.png" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                </a>
+              </li>
+              <li class="nav-item d-sm-none">
                 <router-link to="/" class="nav-link text-dark px-3" active-class="active">Employees</router-link>
               </li>
-              <li class="nav-item">
+              <li class="nav-item d-sm-none">
                 <router-link to="/annual-salary" class="nav-link text-dark px-3" active-class="active">Annual Salary</router-link>
               </li>
             </ul>
