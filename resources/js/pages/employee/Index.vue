@@ -27,9 +27,9 @@
         {{ formatRupiah(item.current_gapok) }}
       </template>
       <template v-slot:item.actions="{ item }">
-        <button class="btn btn-sm btn-primary" @click="selectEmployee(item)">
-          <i class="fa fa-check" aria-hidden="true"></i>
-        </button>
+        <span class="badge bg-primary pointer" @click="selectEmployee(item)">
+          <i class="fa fa-exchange" aria-hidden="true"></i> Use Employee
+        </span>
       </template>
     </v-data-table>
 
@@ -120,3 +120,7 @@ export default {
   },
 };
 </script>
+
+<style scope>
+  .pointer{cursor:pointer}
+</style>
