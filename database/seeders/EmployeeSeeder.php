@@ -1,0 +1,186 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
+class EmployeeSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $employees = [
+            [
+                'nopeg'         => 'EMP0001',
+                'name'          => 'Budi Santoso',
+                'company'       => 'PT Maju Sejahtera',
+                'directorate'   => 'Keuangan',
+                'division'      => 'Akuntansi',
+                'department'    => 'Pembukuan',
+                'section'       => 'Laporan Keuangan',
+                'location'      => 'Jakarta',
+                'current_gapok' => 12500000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0002',
+                'name'          => 'Siti Aminah',
+                'company'       => 'PT Maju Sejahtera',
+                'directorate'   => 'SDM & Umum',
+                'division'      => 'HRD',
+                'department'    => 'Rekrutmen',
+                'section'       => 'Perekrutan Pegawai',
+                'location'      => 'Bandung',
+                'current_gapok' => 11000000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0003',
+                'name'          => 'Dewi Kartika',
+                'company'       => 'PT Nusantara Abadi',
+                'directorate'   => 'IT & Digital',
+                'division'      => 'Pengembangan Aplikasi',
+                'department'    => 'Software Engineer',
+                'section'       => 'Frontend Developer',
+                'location'      => 'Surabaya',
+                'current_gapok' => 14000000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0004',
+                'name'          => 'Andi Prasetyo',
+                'company'       => 'PT Nusantara Abadi',
+                'directorate'   => 'IT & Digital',
+                'division'      => 'Keamanan Data',
+                'department'    => 'Cyber Security',
+                'section'       => 'Analisis Keamanan',
+                'location'      => 'Jakarta',
+                'current_gapok' => 15500000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0005',
+                'name'          => 'Rina Wahyuni',
+                'company'       => 'PT Maju Sejahtera',
+                'directorate'   => 'Pemasaran',
+                'division'      => 'Sales & Marketing',
+                'department'    => 'Promosi',
+                'section'       => 'Digital Marketing',
+                'location'      => 'Medan',
+                'current_gapok' => 10000000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0006',
+                'name'          => 'Agus Saputra',
+                'company'       => 'PT Sentosa Jaya',
+                'directorate'   => 'Operasional',
+                'division'      => 'Manajemen Gudang',
+                'department'    => 'Logistik',
+                'section'       => 'Pengiriman Barang',
+                'location'      => 'Surabaya',
+                'current_gapok' => 9500000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0007',
+                'name'          => 'Wahyudi Pratama',
+                'company'       => 'PT Sentosa Jaya',
+                'directorate'   => 'Produksi',
+                'division'      => 'Pengolahan',
+                'department'    => 'Perakitan',
+                'section'       => 'Pengawasan Mutu',
+                'location'      => 'Bekasi',
+                'current_gapok' => 10500000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0008',
+                'name'          => 'Eka Novita',
+                'company'       => 'PT Sentosa Jaya',
+                'directorate'   => 'Keuangan',
+                'division'      => 'Audit Internal',
+                'department'    => 'Pemeriksaan Keuangan',
+                'section'       => 'Evaluasi Laporan',
+                'location'      => 'Jakarta',
+                'current_gapok' => 13000000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0009',
+                'name'          => 'Putri Anggraini',
+                'company'       => 'PT Nusantara Abadi',
+                'directorate'   => 'Hukum & Legal',
+                'division'      => 'Legal Corporate',
+                'department'    => 'Kontrak & Perjanjian',
+                'section'       => 'Penyusunan Kontrak',
+                'location'      => 'Bandung',
+                'current_gapok' => 12500000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0010',
+                'name'          => 'Rudi Hartono',
+                'company'       => 'PT Maju Sejahtera',
+                'directorate'   => 'Riset & Pengembangan',
+                'division'      => 'Inovasi Produk',
+                'department'    => 'Desain Produk',
+                'section'       => 'Pengembangan Produk',
+                'location'      => 'Yogyakarta',
+                'current_gapok' => 13500000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0011',
+                'name'          => 'Arif Budiman',
+                'company'       => 'PT Sentosa Jaya',
+                'directorate'   => 'Operasional',
+                'division'      => 'Pengadaan Barang',
+                'department'    => 'Supplier Management',
+                'section'       => 'Negosiasi Supplier',
+                'location'      => 'Jakarta',
+                'current_gapok' => 11500000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0012',
+                'name'          => 'Yulia Permata',
+                'company'       => 'PT Nusantara Abadi',
+                'directorate'   => 'Pemasaran',
+                'division'      => 'Brand Management',
+                'department'    => 'Strategi Branding',
+                'section'       => 'Pemasaran Digital',
+                'location'      => 'Surabaya',
+                'current_gapok' => 12800000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0013',
+                'name'          => 'Bayu Wibowo',
+                'company'       => 'PT Maju Sejahtera',
+                'directorate'   => 'SDM & Umum',
+                'division'      => 'Pelatihan & Pengembangan',
+                'department'    => 'Training Karyawan',
+                'section'       => 'Program Pelatihan',
+                'location'      => 'Bali',
+                'current_gapok' => 10200000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0014',
+                'name'          => 'Indah Pertiwi',
+                'company'       => 'PT Sentosa Jaya',
+                'directorate'   => 'IT & Digital',
+                'division'      => 'Manajemen Data',
+                'department'    => 'Database Administrator',
+                'section'       => 'Optimasi Database',
+                'location'      => 'Jakarta',
+                'current_gapok' => 14500000.00,
+            ],
+            [
+                'nopeg'         => 'EMP0015',
+                'name'          => 'Fauzan Hakim',
+                'company'       => 'PT Nusantara Abadi',
+                'directorate'   => 'Hukum & Legal',
+                'division'      => 'Legal Compliance',
+                'department'    => 'Regulasi Perusahaan',
+                'section'       => 'Analisis Hukum',
+                'location'      => 'Bandung',
+                'current_gapok' => 13800000.00,
+            ],
+        ];
+
+        DB::table('employees')->insert($employees);
+    }
+}
