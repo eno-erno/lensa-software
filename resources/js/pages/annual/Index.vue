@@ -22,12 +22,16 @@
           :headers="headers"
           :items="data"
           :loading="loading"
-          :items-per-page-options="[5, 10, 25, 50]"
           :page.sync="page"
-          :total-items="totalItems"
+          :itemsLength="totalItems"
           item-key="id"
           class="elevation-1"
-          @update:page="fetchData"
+          @update:page="updatePage"
+          :footer-props="{
+              'items-per-page-options': [5, 10, 25, 50],
+              'show-current-page': true,
+              'show-first-last-page': true
+          }"
         >
           <template v-slot:item.adjustment_option="{ item }">
             {{ item.adjustment_option.toUpperCase() }}
@@ -55,10 +59,11 @@
 
         <!-- Pagination -->
         <v-pagination
-          v-model:page="page"
-          :length="Math.ceil(totalItems / perPage)"
+          v-model="page" 
+          :length="Math.ceil(totalItems / perPage)" 
           circle
-        ></v-pagination>
+          @update:modelValue="updatePage" 
+        />
       </div>
     </div>
 
@@ -105,6 +110,11 @@ export default {
       { title: "Actions", key: "actions", sortable: false },
     ];
 
+    const updatePage = (newPage) => {
+      page.value = newPage;
+      fetchData();
+    };
+
     const fetchData = async () => {
       loading.value = true;
       try {
@@ -117,6 +127,7 @@ export default {
         });
         data.value = response.data.data;
         totalItems.value = response.data.total;
+        console.log(response.data)
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -166,6 +177,7 @@ export default {
       selectedItem,
       confirmDelete,
       deleteItem,
+      updatePage
     };
   },
 };

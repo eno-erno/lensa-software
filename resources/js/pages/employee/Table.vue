@@ -21,7 +21,7 @@
             class="elevation-1"
             server
             :page="page"
-            :items-length="totalItems"
+            :itemsLength="totalItems"
             @update:page="updatePage"
             :footer-props="{
                 'items-per-page-options': [5, 10, 25, 50],
@@ -40,10 +40,10 @@
             </v-data-table-server>
 
             <v-pagination
-                v-model:page="page"
-                :length="Math.ceil(totalItems / perPage)"
-                circle
-                @update:page="updatePage"
+              v-model="page" 
+              :length="Math.ceil(totalItems / perPage)" 
+              circle
+              @update:modelValue="updatePage" 
             />
        </div>
     </div>
