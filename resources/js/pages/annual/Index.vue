@@ -6,8 +6,8 @@
         <span class="fw-bold ms-auto">
           <router-link to="/annual-salary/add" class="btn btn-sm btn-primary px-3" style="background:#2f3192; border-color:#2f3192">Create</router-link>
         </span>
-        
       </div>
+
       <div class="card-body">
         <input 
           class="form-control mb-3" 
@@ -15,6 +15,7 @@
           v-model="searchQuery" 
           @input="fetchData"
         >
+
         <!-- Data Table -->
         <v-data-table-server
           v-model:items-per-page="perPage"
@@ -45,9 +46,10 @@
                 <i class="fa fa-pencil" aria-hidden="true"></i> Edit
             </router-link>
 
-            <router-link :to="`/annual-salary/add/${item.id}`" class="badge bg-danger ms-2">
-                <i class="fa fa-trash" aria-hidden="true"></i> Delete
-            </router-link>
+            <!-- Tombol Delete -->
+            <span class="badge bg-danger ms-2" style="cursor: pointer;" @click="confirmDelete(item)">
+              <i class="fa fa-trash" aria-hidden="true"></i> Delete
+            </span>
           </template>
         </v-data-table-server>
 
@@ -59,6 +61,20 @@
         ></v-pagination>
       </div>
     </div>
+
+    <!-- Dialog Konfirmasi Hapus -->
+    <v-dialog v-model="dialog" persistent max-width="400px">
+      <v-card>
+        <v-card-title class="text-h5">Confirm Delete</v-card-title>
+        <v-card-text>
+          Are you sure you want to delete <strong>{{ selectedItem?.name }}</strong>?
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="grey" text @click="dialog = false">Cancel</v-btn>
+          <v-btn color="red" text @click="deleteItem">Delete</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     
   </v-container>
 </template>
@@ -76,6 +92,8 @@ export default {
     const perPage = ref(10);
     const totalItems = ref(0);
     const loading = ref(false);
+    const dialog = ref(false);
+    const selectedItem = ref(null);
 
     const headers = [
       { title: "Name", key: "name" },
@@ -84,7 +102,7 @@ export default {
       { title: "Current Gapok", key: "current_gapok" },
       { title: "New Gapok", key: "new_gapok" },
       { title: "Adjustment", key: "adjustment" },
-      { title: "", key: "actions", sortable: false },
+      { title: "Actions", key: "actions", sortable: false },
     ];
 
     const fetchData = async () => {
@@ -106,6 +124,21 @@ export default {
       }
     };
 
+    const confirmDelete = (item) => {
+      selectedItem.value = item;
+      dialog.value = true;
+    };
+
+    const deleteItem = async () => {
+      try {
+        await axios.delete(`/api/list-annual-salary/${selectedItem.value.id}`);
+        dialog.value = false;
+        fetchData(); 
+      } catch (error) {
+        console.error("Error deleting item:", error);
+      }
+    };
+
     const formatRupiah = (value) => {
       if (!value) return "IDR 0";
       return new Intl.NumberFormat("id-ID", {
@@ -115,7 +148,6 @@ export default {
       }).format(value);
     };
 
-    // Fetch data when the component is mounted
     onMounted(() => {
       fetchData();
     });
@@ -130,11 +162,11 @@ export default {
       headers,
       fetchData,
       formatRupiah,
+      dialog,
+      selectedItem,
+      confirmDelete,
+      deleteItem,
     };
   },
 };
 </script>
-
-<style scoped>
-/* Anda dapat menambahkan styling tambahan di sini jika diperlukan */
-</style>

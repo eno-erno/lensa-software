@@ -21,6 +21,7 @@ use App\Http\Controllers\Api\EmployeeController;
 
 Route::get('/employees', [EmployeeController::class, 'index']);
 Route::get('/list-annual-salary', [EmployeeController::class, 'listAnnualSalary']);
+Route::delete('/list-annual-salary/{id}', [EmployeeController::class, 'destroy']);
 Route::get('/detail-annual-salary/{id}', [EmployeeController::class, 'detailAnnualSalary']);
 Route::get('/annual_salary-getnoreg', [EmployeeController::class, 'getnoreg']);
 Route::get('/employees/{id}', [EmployeeController::class, 'detail']);

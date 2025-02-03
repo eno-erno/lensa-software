@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Employee};
+use App\Models\{Employee, AnnualSalary};
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -33,8 +33,7 @@ class EmployeeController extends Controller
         $perPage = $request->input('per_page', 10);
         $search = $request->input('search', '');
 
-        $query = DB::table('annual_salary')
-            ->select('employees.*', 'annual_salary.*')
+        $query = AnnualSalary::select('employees.*', 'annual_salary.*')
             ->join('employees', 'employees.id', 'annual_salary.employee_id');
 
         if ($search) {
@@ -191,8 +190,12 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        AnnualSalary::where('id', $id)->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Annual Salary record successfully deleted'
+        ], 201);
     }
 }
