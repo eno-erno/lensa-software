@@ -110,6 +110,11 @@ export default {
       { title: "Actions", key: "actions", sortable: false },
     ];
 
+    onMounted(() => {
+      fetchData();
+    });
+
+    // method
     const updatePage = (newPage) => {
       page.value = newPage;
       fetchData();
@@ -158,10 +163,6 @@ export default {
         currencyDisplay: "code",
       }).format(value);
     };
-
-    onMounted(() => {
-      fetchData();
-    });
 
     return {
       data,

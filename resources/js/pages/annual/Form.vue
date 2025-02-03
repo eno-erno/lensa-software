@@ -439,7 +439,18 @@ export default {
       }
     };
 
-    return { form, openModal, selectEmployee, submitForm, updateNewGapok, formattedCurrentGapok, formattedNewGapok, formattedAdjustment, formattedAmount, formattedPctgAdjustment };
+    return { 
+      form, 
+      openModal, 
+      selectEmployee, 
+      submitForm, 
+      updateNewGapok, 
+      formattedCurrentGapok, 
+      formattedNewGapok, 
+      formattedAdjustment, 
+      formattedAmount, 
+      formattedPctgAdjustment 
+    };
   },
 };
 
