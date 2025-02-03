@@ -1,4 +1,4 @@
-## Install Projexy
+## Install Project
 
 Please makesure this requirment:
 
